@@ -61,7 +61,7 @@
 
     <Button
         android:layout_width="200dp"
-        android:text="Clear"
+        android:text="Sort Quantity"
         android:backgroundTint="#ec40"
         android:id="@+id/clear_product"
         android:layout_height="wrap_content"

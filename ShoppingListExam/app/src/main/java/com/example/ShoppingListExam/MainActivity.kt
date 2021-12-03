@@ -22,8 +22,7 @@ import com.example.ShoppingListExam.data.DAOProducts
 import com.example.ShoppingListExam.data.Product
 import com.example.ShoppingListExam.databinding.ActivityMainBinding
 import androidx.annotation.NonNull
-
-
+import com.example.ShoppingListExam.data.Repository
 
 
 class MainActivity : AppCompatActivity() {
@@ -62,8 +61,9 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId){
             ///run settings activity
 
+                //run intent with settings activity
           R.id.nav_settings -> startActivity(intent)
-            //R.id.nav_settings -> showsettings(binding.root)
+
         }
 
         ///
@@ -87,7 +87,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.clearProduct.setOnClickListener{
-            showDialog(view)
+            //dao sort
+            dao.sort()
+            Log.d("sort","sortclicked")
         }
 
         //

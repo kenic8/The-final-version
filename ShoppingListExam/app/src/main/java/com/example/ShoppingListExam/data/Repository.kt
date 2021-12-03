@@ -13,7 +13,7 @@ object Repository {
 
 
     //listener to changes that we can then use in the Activity
-    private var productListener = MutableLiveData<MutableList<Product>>()
+    var productListener = MutableLiveData<MutableList<Product>>()
 
 
     fun getData(): MutableLiveData<MutableList<Product>> {
@@ -61,7 +61,7 @@ object Repository {
                                 Product(
                                     p.child("title").value.toString(),
                                     p.child("detail").value.toString(),
-                                    p.child("quantity").value.toString(), //indsæt quantity
+                                    p.child("quantity").value.toString(),
                                     p.key.toString()
                                 )
                             )
@@ -77,20 +77,6 @@ object Repository {
             return productListener
         }
 
-      /*  fun createTestData() {
-            //add some products to the products list - for testing purposes
-            Log.d("Repository", "create testdata")
-            products.add(
-                Product(
-                    title = "tomater",
-                    detail = "someoaksdomodmsoadmoamsdomasod",
-                    image = R.drawable.image1,
-                    ""
-                )
-            )
-
-
-        }*/
 
         return productListener
     }
