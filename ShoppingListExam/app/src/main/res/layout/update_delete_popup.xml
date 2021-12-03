@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="producttitle"
+        android:id="@+id/view_producttitle"
+        />
+
+    <EditText
+        android:id="@+id/edit_productname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        app:layout_constraintTop_toBottomOf="@+id/view_producttitle"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/edit_productname"
+        android:text="productname"
+        android:id="@+id/productname"
+        />
+
+    <EditText
+        android:id="@+id/edit_productdescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/productname"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        app:layout_constraintTop_toBottomOf="@id/edit_productdescription"
+        android:layout_width="200dp"
+        android:text="submit"
+        android:id="@+id/submit_product"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        app:layout_constraintTop_toBottomOf="@id/submit_product"
+        android:layout_width="200dp"
+        android:text="Remove"
+        android:id="@+id/remove_product"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        app:layout_constraintTop_toBottomOf="@id/remove_product"
+        android:layout_width="200dp"
+        android:backgroundTint="#ec40"
+        android:text="Cancel"
+        android:id="@+id/Cancel"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
