@@ -26,6 +26,7 @@ import com.example.ShoppingListExam.data.Repository
 
 
 class MainActivity : AppCompatActivity() {
+    private val REQUEST_CODE = 5
 
     //you need to have an Adapter for the products
    lateinit var adapter: ProductAdapter
@@ -52,7 +53,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        //settings
         val intent = Intent(this,SettingsActivity::class.java)
+
+        /*///sharing
+        val shareintent = Intent(Intent.ACTION_SEND)
+        shareintent.type ="text/plain"
+        val sep = "-"
+        val chooser = Intent.createChooser(shareintent,"Share using..")
+        val stringlist = Repository.productListener.value!!.joinToString(sep)
+        Log.d("stringlist",stringlist)
+        shareintent.putExtra("Shared list",stringlist)*/
+
+        ///sharing
+        val shareintent = Intent(this,ShareActivity::class.java)
+        shareintent.type ="text/plain"
+        val sep = "-"
+        val chooser = Intent.createChooser(shareintent,"Share using..")
+        val stringlist = Repository.productListener.value!!.joinToString(sep)
+        Log.d("stringlist",stringlist)
+        shareintent.putExtra("qString",stringlist)
+
+
 
         when (item.itemId){
             R.id.nav_delete -> showDialog(binding.root)
@@ -60,11 +82,19 @@ class MainActivity : AppCompatActivity() {
 
         when (item.itemId){
             ///run settings activity
-
                 //run intent with settings activity
           R.id.nav_settings -> startActivity(intent)
 
         }
+
+        when (item.itemId){
+            ///run settings activity
+            //run intent with settings activity
+            R.id.nav_share -> startActivity(chooser)
+
+        }
+
+
 
         ///
 
