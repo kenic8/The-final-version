@@ -1,6 +1,8 @@
 package com.example.ShoppingListExam
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
@@ -8,15 +10,21 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ShoppingListExam.Adapters.ProductAdapter
 import com.example.ShoppingListExam.data.DAOProducts
 import com.example.ShoppingListExam.data.Product
 import com.example.ShoppingListExam.databinding.ActivityMainBinding
+import androidx.annotation.NonNull
+
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -45,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        //val intent = Intent(this,SettingsActivity::class.java)
+        val intent = Intent(this,SettingsActivity::class.java)
 
         when (item.itemId){
             R.id.nav_delete -> showDialog(binding.root)
@@ -54,9 +62,12 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId){
             ///run settings activity
 
-            //R.id.nav_settings ->
+          R.id.nav_settings -> startActivity(intent)
             //R.id.nav_settings -> showsettings(binding.root)
         }
+
+        ///
+
         return super.onOptionsItemSelected(item)
     }
 
@@ -86,10 +97,42 @@ class MainActivity : AppCompatActivity() {
         viewModel.getData().observe(this, Observer {
             Log.d("Products","Found ${it.size} products")
             updateUI(it)
+
         })
 
+        load_settings()
+
     }
-//Dialog
+
+
+    ///Change background based on settings
+    override fun onResume() {
+        super.onResume()
+        load_settings()
+    }
+
+
+
+
+
+    ///settings
+    fun load_settings()
+    {
+        val SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        val chk_night = SharedPreferences.getBoolean("night", false)
+
+        Log.d("night", chk_night.toString())
+        if (chk_night) {
+            Toast.makeText(this, "should Now be using darkmode", Toast.LENGTH_SHORT).show()
+            binding.main.setBackgroundColor(Color.parseColor("#585858"))
+
+
+        } else {
+            Toast.makeText(this, "should Now be using normal", Toast.LENGTH_SHORT).show()
+            binding.main.setBackgroundColor(Color.parseColor("#ffffff"))
+        }
+    }
+
 
 
     //callback function from yes/no dialog - for yes choice
@@ -103,6 +146,8 @@ class MainActivity : AppCompatActivity() {
        dao.clear()
 
     }
+
+
 
 
     //callback function from yes/no dialog - for no choice
