@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints"
         android:id="@+id/edit_productname"
+        android:text=""
         app:layout_constraintTop_toBottomOf="@id/view_producttitle" />
 
     <TextView
@@ -42,6 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints"
+        android:text=""
         android:id="@+id/edit_productdescription"
         app:layout_constraintTop_toBottomOf="@id/productname" />
 
@@ -57,6 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints"
+        android:text=""
         android:id="@+id/edit_productquantity"
         app:layout_constraintTop_toBottomOf="@id/productquantity" />
     <Button

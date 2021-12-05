@@ -30,10 +30,8 @@ class DAOProducts {
 
 
     fun update (key:String, hashMapProduct: HashMap<String,Any>){
-
-        //var title:String = "", var detail:String="", var image:Int)
-
         ref.child(key).updateChildren(hashMapProduct)
+        Repository.getData()
 
     }
     fun delete (key:String){

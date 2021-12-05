@@ -4,6 +4,7 @@ package com.example.ShoppingListExam.Adapters
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -81,8 +82,20 @@ class ProductAdapter(var products: MutableList<Product>, var context: Context) :
                 Log.d("click", position.toString())
                 val key = products[position].key
                 ///sharing
-               // val editIntent = Intent(this, ShareActivity::class.java)
-                val editIntent = context.startActivity(Intent(context, EditActivity::class.java).putExtra("key",key))
+              /* val data = Bundle()
+                data.putString("detail",products[position].detail)
+                data.putString("title",products[position].title)
+                data.putString("quantity",products[position].quantity)
+                data.putString("key",products[position].key)
+*/
+
+                val editIntent = Intent(context, EditActivity::class.java)
+                editIntent.putExtra("detail",products[position].detail)
+                editIntent.putExtra("title",products[position].title)
+                editIntent.putExtra("quantity",products[position].quantity)
+                editIntent.putExtra("key",products[position].key)
+
+                context.startActivity(editIntent)
 
                 Log.d("stringlist",key)
                 /// run intent with edit
@@ -91,36 +104,6 @@ class ProductAdapter(var products: MutableList<Product>, var context: Context) :
 
         }
 
-
-     /*   fun showPopup(key:String,view: View) {
-
-
-            Log.d("show", "showhow")
-            val popupView: View = LayoutInflater.from(view.context).inflate(R.layout.update_delete_popup, null)
-
-            val updateBtn: Button = popupView.findViewById(R.id.submit_product)
-            val deleteBtn: Button = popupView.findViewById(R.id.remove_product)
-            val cancelBtn: Button = popupView.findViewById(R.id.Cancel)
-            val productTitle = popupView.findViewById(R.id.edit_productname) as EditText
-            val productDetail =  popupView.findViewById(R.id.edit_productdescription) as EditText
-            updateBtn.setOnClickListener {
-                val dao = DAOProducts()
-                var hashMapProduct : HashMap<String, Any>
-                        = HashMap<String, Any> ()
-                ///get values from product view
-                hashMapProduct.put("Prdouct",Product(productTitle.toString(),productDetail.toString(),2131165314,key))
-
-                dao.update("Product",hashMapProduct)
-            }
-
-            deleteBtn.setOnClickListener {
-                val dao = DAOProducts()
-                dao.delete(key)
-
-            }
-
-
-        }*/
     }
 }
 

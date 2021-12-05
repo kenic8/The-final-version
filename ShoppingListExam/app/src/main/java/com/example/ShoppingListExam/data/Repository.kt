@@ -23,7 +23,6 @@ object Repository {
         val ref = database.getReference("products")
 
         ref.addValueEventListener(object : ValueEventListener {
-
             override fun onDataChange(snapshot: DataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
