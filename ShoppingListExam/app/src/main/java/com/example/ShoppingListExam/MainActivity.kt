@@ -26,9 +26,8 @@ import com.example.ShoppingListExam.data.Repository
 
 
 class MainActivity : AppCompatActivity() {
-    private val REQUEST_CODE = 5
+   // private val REQUEST_CODE = 5
 
-    //you need to have an Adapter for the products
    lateinit var adapter: ProductAdapter
    lateinit var binding : ActivityMainBinding
    lateinit var viewModel : MainViewModel
@@ -56,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         //settings
         val intent = Intent(this,SettingsActivity::class.java)
 
-        /*///sharing
+        /*///sharing if sending to extnal apps
         val shareintent = Intent(Intent.ACTION_SEND)
         shareintent.type ="text/plain"
         val sep = "-"
@@ -224,7 +223,7 @@ class MainActivity : AppCompatActivity() {
 
        binding.recyclerView.layoutManager = layoutManager
 
-       adapter = ProductAdapter(products)
+       adapter = ProductAdapter(products,this)
       /*connecting the recyclerview to the adapter  */
       binding.recyclerView.adapter = adapter
 
