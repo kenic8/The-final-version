@@ -12,7 +12,6 @@ open class DialogFragment(var posClick: ()-> Unit, var negClick: ()->Unit= {}) :
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
-        //Here we create a new dialogbuilder;
         val alert = AlertDialog.Builder(
                 activity)
         alert.setTitle(R.string.confirmation)
@@ -23,8 +22,6 @@ open class DialogFragment(var posClick: ()-> Unit, var negClick: ()->Unit= {}) :
         return alert.create()
     }
 
-    //This is our positive listener for when the user presses
-    //the yes button
     private var pListener: DialogInterface.OnClickListener = DialogInterface.OnClickListener {_, _ ->
         // these will be executed when user click Yes button
         posClick()

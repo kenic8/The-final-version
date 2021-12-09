@@ -21,7 +21,7 @@ class DAOProducts {
             Repository.getData()
 
         }.addOnFailureListener {
-
+///do nothing
         }
         Repository.getData()
     }

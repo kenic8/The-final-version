@@ -64,8 +64,6 @@ class ProductAdapter(var products: MutableList<Product>, var context: Context) :
         init {
             productOptions.setOnClickListener(this)
             productEdit.setOnClickListener(this)
-
-
         }
 
 
@@ -78,6 +76,8 @@ class ProductAdapter(var products: MutableList<Product>, var context: Context) :
                 Log.d("click", position.toString())
                 dao.delete(products[position].key)
             }
+
+
             if (position != RecyclerView.NO_POSITION && view == productEdit ) {
                 Log.d("click", position.toString())
                 val key = products[position].key

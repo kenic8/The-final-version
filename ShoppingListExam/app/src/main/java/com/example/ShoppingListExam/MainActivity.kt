@@ -51,6 +51,8 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
+
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         //settings
         val intent = Intent(this,SettingsActivity::class.java)
@@ -69,11 +71,11 @@ class MainActivity : AppCompatActivity() {
         shareintent.type ="text/plain"
         val sep = "-"
         val chooser = Intent.createChooser(shareintent,"Share using..")
-        val stringlist = Repository.productListener.value!!.joinToString(sep)
-        Log.d("stringlist",stringlist)
-        shareintent.putExtra("qString",stringlist)
-
-
+        if(Repository.productListener.value != null ){
+           val stringlist = Repository.productListener.value!!.joinToString(sep)
+            Log.d("stringlist",stringlist)
+            shareintent.putExtra("String",stringlist)
+        }
 
         when (item.itemId){
             R.id.nav_delete -> showDialog(binding.root)
@@ -115,7 +117,7 @@ class MainActivity : AppCompatActivity() {
             hideKeyboard()
         }
 
-        binding.clearProduct.setOnClickListener{
+        binding.sortProduct.setOnClickListener{
             //dao sort
             dao.sort()
             Log.d("sort","sortclicked")
@@ -141,8 +143,6 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         load_settings()
     }
-
-
 
 
 
@@ -177,9 +177,6 @@ class MainActivity : AppCompatActivity() {
        dao.clear()
 
     }
-
-
-
 
     //callback function from yes/no dialog - for no choice
     private fun negativeClick() {

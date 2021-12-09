@@ -10,10 +10,10 @@ class ShareActivity : AppCompatActivity() {
         setContentView(R.layout.activity_share)
 
         val extras = intent.extras ?: return
-        val qString = extras.getString(Constants.QUESTION_KEY)
-        if (qString != null) {
+        val String = extras.getString(Constants.SHARE_KEY)
+        if (String != null) {
            val text: TextView = findViewById(R.id.textViewShare) as TextView
-            text.text = qString
+            text.text = String
         }
 }
 }

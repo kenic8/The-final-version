@@ -13,17 +13,14 @@ import kotlin.math.log
 
 class EditActivity : AppCompatActivity() {
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        when (item.itemId) {
-            ///run settings activity
-            item.itemId -> this.finish();
+       when (item.itemId) {
+           ///run settings activity
+           item.itemId -> this.finish();
         }
         return super.onOptionsItemSelected(item)
-    }
-
-
-
+  }
     override fun onCreate(savedInstanceState: Bundle?) {
 
         val dao = DAOProducts()

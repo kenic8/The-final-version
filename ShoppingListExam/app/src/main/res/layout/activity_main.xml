@@ -63,7 +63,7 @@
         android:layout_width="200dp"
         android:text="Sort Quantity"
         android:backgroundTint="#ec40"
-        android:id="@+id/clear_product"
+        android:id="@+id/sort_product"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/submit_product"
         tools:ignore="MissingConstraints" />
@@ -74,6 +74,6 @@
         android:id="@+id/recyclerView"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clear_product" />
+        app:layout_constraintTop_toBottomOf="@+id/sort_product" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
