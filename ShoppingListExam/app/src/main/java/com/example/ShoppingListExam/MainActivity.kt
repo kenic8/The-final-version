@@ -193,22 +193,8 @@ class MainActivity : AppCompatActivity() {
         //showing our dialog.
 
         val dialog = DialogFragment(::positiveClicked, ::negativeClick)
-        //Here we show the dialog
-        //The tag "MyFragement" is not important for us.
-        dialog.show(supportFragmentManager, "myFragment")
+            dialog.show(supportFragmentManager, "myFragment")
     }
-
-
-    fun showsettings(v: View) {
-        //showing our dialog.
-
-        val dialog = settingsFragment(::positiveClicked, ::negativeClick)
-        //Here we show the dialog
-        //The tag "MyFragement" is not important for us.
-        dialog.show(supportFragmentManager, "myFragment")
-    }
-
-
 
     fun updateUI(products : MutableList<Product>) {
 
